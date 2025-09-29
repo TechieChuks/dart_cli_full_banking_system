@@ -1,4 +1,4 @@
-import 'package:dart_cli_full_banking_system/models/user.dart';
+import 'package:dart_cli_full_banking_system/banking/models/user.dart';
 
 import '../utils/storage.dart';
 

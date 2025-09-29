@@ -1,6 +1,6 @@
 import 'dart:io';
 import 'dart:convert';
-import 'package:dart_cli_full_banking_system/models/user.dart';
+import 'package:dart_cli_full_banking_system/banking/models/user.dart';
 
 class Storage {
   final String usersFile = 'data/users.json';
