@@ -10,7 +10,7 @@ void main() async {
 
   await bank.loadUsers();
 
-  print('=== CLI Banking System ===');
+  print('=== Enhanced CLI Banking System ===');
 
   while (true) {
     print('\n1. Register');
@@ -62,10 +62,10 @@ Future<void> loginCLI(BankService bank) async {
 
 Future<void> userMenu(BankService bank, User user) async {
   while (true) {
-    print('\n1. Deposit');
-    print('2. Withdraw');
-    print('3. Check Balance');
-    print('4. Logout');
+    print(
+      '\n1. Deposit\n2. Withdraw\n3. Check Balance\n4. Transaction History\n5. Logout',
+    );
+
     stdout.write('Choice: ');
     final choice = stdin.readLineSync();
 
@@ -90,6 +90,16 @@ Future<void> userMenu(BankService bank, User user) async {
         print('Balance: \$${bank.checkBalance(user).toStringAsFixed(2)}');
         break;
       case '4':
+        final history = bank.getTransactionHistory(user);
+        if (history.isEmpty) {
+          print('No transactions yet.');
+        } else {
+          print('Transaction History:');
+          for (var t in history) {
+            print('${t.date.toLocal()} - ${t.type} - \$${t.amount}');
+          }
+        }
+      case '5':
         print('Logged out.');
         return;
       default:
